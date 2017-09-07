@@ -1,0 +1,71 @@
+{
+	"bigObjectTextField": {
+		"prefix": "botext",
+		"body": [
+			"<fields>",
+			"\t<type>Text</type>",
+			"\t<label>${1}</label>",
+			"\t<fullName>${1}__c</fullName>",
+			"\t<length>${2:255}</length>",
+			"\t<required>${3|false,true|}</required>",
+			"\t<unique>${4|false,true|}</unique>",
+			"</fields>"
+		],
+		"description": "creates a text field for a big object"
+	},
+
+	"bigObjectLookupField": {
+		"prefix": "bolookup",
+		"body": [
+			"<fields>",
+			"\t<type>Lookup</type>",
+			"\t<label>${1}</label>",
+			"\t<fullName>${1}__c</fullName>",
+			"\t<referenceTo>${2}</referenceTo>",
+			"\t<relationshipName>${3}</relationshipName>",
+			"\t<required>${4|false,true|}</required>",
+			"</fields>"
+		],
+		"description": "creates a lookup field for a big object"
+	},
+
+	"bigObjectNumberField": {
+		"prefix": "bonumber",
+		"body": [
+			"<fields>",
+			"\t<type>Number</type>",
+			"\t<label>${1}</label>",
+			"\t<fullName>${1}__c</fullName>",
+			"\t<scale>${2:2}</scale>",
+			"\t<precision>${3:0}</precision>",
+			"\t<required>${4|false,true|}</required>",
+			"</fields>"
+		],
+		"description": "creates a number field for a big object"
+	},
+
+	"bigObjectDateField": {
+		"prefix": "bodate",
+		"body": [
+			"<fields>",
+			"\t<type>Date</type>",
+			"\t<label>${1}</label>",
+			"\t<fullName>${1}__c</fullName>",
+			"</fields>"
+		],
+		"description": "creates a date field for a big object"
+	},
+
+	"bigObjectDateTimeField": {
+		"prefix": "bodatetime",
+		"body": [
+			"<fields>",
+			"\t<type>DateTime</type>",
+			"\t<label>${1}</label>",
+			"\t<fullName>${1}__c</fullName>",
+			"</fields>"
+		],
+		"description": "creates a dateTime field for a big object"
+	},
+
+}

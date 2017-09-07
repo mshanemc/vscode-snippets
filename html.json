@@ -1,0 +1,148 @@
+{
+	"lightning": {
+		"prefix": "<lightning",
+		"body": "<lightning:"
+	},
+
+
+
+	"Lightning Require": {
+		"prefix": "<ltng:require",
+		"body": [
+			"<ltng:require scripts=\"{!\\$Resource.${1:lodash}}\" styles=\"\\${2:styles}\" afterScriptsLoaded=\"{!c.${3:doInit}}\"/>"
+		],
+		"description": "Log output to console"
+	},
+
+	"Aura Attribute" : {
+		"prefix": "<aura:attribute",
+		"body": "<aura:attribute name=\"${1:name}\" type=\"${2|string,boolean,object,object[],date,dateTime,decimal,double,integer,long,Aura.Component,Aura.Component[]|}\" default=\"${3}\" access=\"${4|public,global,private|}\" required=\"${5|false,true|}\"/>",
+		"description": "attribute with name, type, default.  "
+	},
+
+	"Aura iteration": {
+		"prefix": "<aura:iteration",
+		"body": [
+			"<aura:iteration items=\"{!v.${1:attribute}}\" var=\"${2:localVar}\">",
+			"\t$3",
+			"</aura:iteration>"
+		],
+		"description": "aura:iteration"
+	},
+	"Aura init": {
+		"prefix": "<aura:init",
+		"body": [
+			"<aura:handler name=\"init\" value=\"{!this}\" action=\"{!c.${2:doInit}}\"/>"
+		],
+		"description": "aura:init"
+	},
+	"Aura Event Handler" : {
+		"prefix" : "<aura:handler",
+		"body": ["<aura:handler event=\"${1|c,force,lightning,ui,ltng,forceCommunity|}:${2}\" action=\"{!c.${3:action}}\"/>"],
+		"description": "aura handler for standard or custom events"
+	},
+
+	"Aura if": {
+		"prefix": "aura:if",
+		"body": [
+			"aura:if isTrue=\"{!v.$1}\">",
+			"\t$2",
+			"</aura:if>"
+		],
+		"description": "aura:if"
+	},
+	"Lightning Error Handler": {
+		"prefix": "leh",
+		"body": [
+			"<c:LightningErrorHandler aura:id=\"${1:leh}\"/>"
+		],
+		"description": "Lightning Error Handler"
+	},
+	"Component Extends": {
+		"prefix": "extends",
+		"body": [
+			"extends=\"${1:c}:${2:component}\""
+		],
+		"description": "Component Extends"
+	},
+
+
+	"overlayLibrary" : {
+		"prefix": "<lightning:overlayLibrary",
+		"body": "<lightning:overlayLibrary aura:id=\"overlayLib\"/>",
+		"description": "popovers and modals"
+	},
+
+	"lightning:card": {
+		"prefix": "<lightning:card",
+		"body": [
+			"<!--icons at https://www.lightningdesignsystem.com/icons/ -->",
+			"<lightning:card title=\"$1\" iconName=\"${2|action,custom,doctype,standard,utility|}:${3:icon}\" variant=\"${4|base,narrow|}\">",
+			"\t<aura:set attribute=\"actions\">",
+			"\t\t<!--actions go here, mostly buttons!-->",
+			"\t</aura:set>",
+			"\t<aura:set attribute=\"footer\">",
+			"\t\t<!--footer markup-->",
+			"\t</aura:set>",
+			"\t<!--then put your body here, outside any aura:set-->",
+			"</lightning:card>"
+		],
+		"description": "lightning:card"
+	},
+	"lightning:icon": {
+		"prefix": "<lightning:icon",
+		"body": [
+			"<lightning:icon iconName=\"${1|utility,custom,doctype,standard,action|}:${2:icon}\" variant=\"${3|none,inverse,warning,error|}\" size=\"${4|medium,large,small,x-small,xx-small|}\"/>"
+		],
+		"description": "lightning:icon"
+	},
+	"lightning:layout": {
+		"prefix": "<lightning:layout",
+		"body": [
+			"<lightning:layoutItem>",
+			"\t$1",
+			"</lightning:layoutItem>"
+		],
+		"description": "layoutItem"
+	},
+
+	"lightning:layoutItem": {
+		"prefix": "<lightning:layoutItem",
+		"body": [
+			"<lightning:layoutItem>",
+			"\t$1",
+			"</lightning:layoutItem>"
+		],
+		"description": "layoutItem"
+	},
+
+	"force:recordData": {
+		"prefix": "<force:recordData",
+		"body": [
+			"<force:recordData aura:id=\"${1:frd}\" mode=\"${2|VIEW,EDIT|}\" recordId=\"{!v.${3:recordId}}\" targetFields=\"{!v.${4:targetFields}}\" layoutType=\"${5|FULL,COMPACT|}\" >"
+		],
+		"description": "force:recordData"
+	},
+	"Flexipage types": {
+		"prefix": "flexi",
+		"body": [
+			"flexipage:${1|availableForAllPageTypes,availableForRecordHome|}"
+		],
+		"description": "flexipage All Page Types"
+	},
+	"force types": {
+		"prefix": "force",
+		"body": [
+			"force:${1|hasRecordId,hasSObjectName,appHostable,lightningQuickAction,lightningQuickActionWithoutHeader|}"
+		],
+		"description": "force page types"
+	},
+	"Community types": {
+		"prefix": "forceCommunity",
+		"body": [
+			"forceCommunity:${1|availableForAllPageTypes|}"
+		],
+		"description": "flexipage All Page Types"
+	}
+
+}

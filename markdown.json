@@ -1,0 +1,12 @@
+{
+	"githubSFDeploy" :{
+		"prefix": "githubSFDeploy",
+		"body" : [
+			"<a href=\"https://githubsfdeploy.herokuapp.com?owner=mshanemc&repo=${1:repoName}\">",
+			"\t<img alt=\"Deploy to Salesforce\"",
+				"\t\tsrc=\"https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png\"/>",
+		  	"</a>"
+		],
+		"description": "github deploy button"
+	}
+}

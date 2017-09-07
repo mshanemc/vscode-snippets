@@ -1,0 +1,108 @@
+{
+
+
+	// Place your snippets for JavaScript here. Each snippet is defined under a snippet name and has a prefix, body and
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the
+	// same ids are connected.
+	// Example:
+	"recordData saveRecord": {
+		"prefix": "save",
+		"body": [
+			"component.find(\"${1:this}\").saveRecord(",
+				"\t\\$A.getCallback(function(saveResult){",
+					"\t\t//console.log(saveResult);",
+					"\t\tif (saveResult.state === \"SUCCESS\"){",
+						"\t\t\t${2://happy logic here}",
+						"\t\t\tcomponent.find(\"$1\").reloadRecord();",
+					"\t\t} else if (saveResult.state === \"INCOMPLETE\") {",
+						"\t\t\tconsole.log('User is offline, device doesn't support drafts.');",
+					"\t\t} else if (saveResult.state === \"ERROR\"){",
+						"\t\t\tcomponent.find(\"leh\").passErrors(saveResult.error);",
+					"\t\t}",
+				"\t});"
+		],
+		"description": "force:recordData find/saveRecord"
+	},
+
+	"promiseAction" : {
+		"prefix": "promiseAction",
+		"body" : [
+			"var ${1:action} = component.get(\"c.${2}\");",
+			"helper.${3|executeAction,executeActionJSON|}(component, ${1})",
+			"\t.then(\\$A.getCallback(function (result){",
+				"\t\t${4://console.log(result);}",
+			"\t}),\\$A.getCallback(function (){}));"
+		],
+		"description": "promise Action (helper) for extending promiseErrorHandler"
+	},
+
+	"enqueueAction" : {
+		"prefix": "$A.enqueueAction",
+		"body": "\\$A.enqueueAction(${1:action})",
+		"description": "action enqueueing"
+	},
+
+
+	"navToSObject" : {
+		"prefix": "navToSObject",
+		"body" : [
+			"var navEvt = \\$A.get(\"e.force:navigateToSObject\");",
+			"navEvt.setParams({",
+				"\t\"recordId\": ${1:recordId},",
+				"\t\"slideDevName\": \"${2|detail,chatter,related|}\"",
+			"});",
+			"navEvt.fire();"
+		],
+		"description": "nav and fire to a record"
+	},
+
+	"functionController" :{
+		"prefix" : "functionController",
+		"body" : [
+			"${1:functionName} : function(component${2:, event}${3:, helper}) {",
+				"\t${4}",
+			"},"
+		],
+		"description": "function for a controller (not helper)"
+	},
+
+	"componentMethods" : {
+		"prefix" : "comp",
+		"body": [
+			"component.${1|get,set|}(\"${2|v,c|}.$3\");"
+		],
+		"description" : "get and set c and v on components"
+	},
+
+	"action" : {
+		"prefix": "action",
+		"body": [
+			"var action = component.get(\"c.${1:apexMethod}\");",
+			"action.setParams({",
+				"\t${3:key} : \"${4:value}\"",
+			"});",
+			"action.setCallback(this, function(a){",
+				"\tvar state = a.getState();",
+				"\tif (state === \"SUCCESS\") {",
+					"\t\t${5:console.log(a);}",
+				"\t} else if (state === \"ERROR\") {",
+					"\t\tconsole.log(a.getError());",
+				"\t}",
+			"});",
+			"\\$A.enqueueAction(action);"
+		],
+		"description": "apex action with callback"
+	},
+
+	"lightning message" : {
+		"prefix" : "message",
+		"body" : [
+			"\\$A.get(\"e.ltng:sendMessage\")",
+				"\t.setParams({\"message\" : \"${1:message}\", \"channel\" : \"${2:channel(optional)}\"})",
+				"\t.fire();"
+		],
+		"description": "fire a ltng:message"
+	}
+
+}
