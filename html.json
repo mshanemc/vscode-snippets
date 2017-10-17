@@ -112,7 +112,8 @@
 	"force:recordData": {
 		"prefix": "<force:recordData",
 		"body": [
-			"<force:recordData aura:id=\"${1:frd}\" mode=\"${2|VIEW,EDIT|}\" recordId=\"{!v.${3:recordId}}\" targetFields=\"{!v.${4:targetFields}}\" layoutType=\"${5|FULL,COMPACT|}\" >"
+			"<force:recordData aura:id=\"${1:frd}\" mode=\"${2|VIEW,EDIT|}\" recordId=\"{!v.${3:recordId}}\" targetFields=\"{!v.${4:targetFields}}\" layoutType=\"${5|FULL,COMPACT|}\" >",
+			"<aura:attribute name=\"$4\" type=\"Object\"/>"
 		],
 		"description": "force:recordData"
 	},
