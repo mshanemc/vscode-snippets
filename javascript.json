@@ -13,7 +13,8 @@
 			"\t\t} else if (saveResult.state === \"ERROR\"){",
 			"\t\t\tcomponent.find(\"leh\").passErrors(saveResult.error);",
 			"\t\t}",
-			"\t});"
+			"\t})",
+			");"
 		],
 		"description": "force:recordData find/saveRecord"
 	},
