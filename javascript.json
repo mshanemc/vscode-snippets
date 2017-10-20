@@ -96,5 +96,19 @@
 			"\\$A.get(\"e.force:showToast\").setParams({\"type\" : \"${1|info,error,success,warning|}\", \"message\" : \"${2:message}\"}).fire();"
 		],
 		"description": "force:showToast message"
+	},
+	"newRecord": {
+		"prefix": "newRec",
+		"body": [
+			"component.find(\"${1:frd}\").getNewRecord(",
+			"\t\"${2:object__c}\", // sObject type (objectApiName)",
+			"\tnull,      // recordTypeId",
+			"\tfalse,     // skip cache?",
+			"\t\\$A.getCallback(function() {",
+			"\t\t",
+			"\t})",
+			");"
+		],
+		"description": "generate new record from force:recordData"
 	}
 }
