@@ -146,8 +146,8 @@
 		],
 		"description": "design attribute with name, label, description"
 	},
-	"design component" : {
-		"prefix" : "<design:component",
+	"design component": {
+		"prefix": "<design:component",
 		"body": [
 			"<design:component label=\"$1\">",
 			"",
@@ -156,5 +156,13 @@
 			"</design:component>"
 		],
 		"description": "outer component for a .design file"
+	},
+
+	"changeHandler": {
+		"prefix": "<aura:handler",
+		"body": [
+			"<aura:handler name=\"change\" value=\"{!v.${1:attr}}\" action=\"{!c.${function}}\" />"
+		],
+		"description": "aura change handler for watching attribute changes"
 	}
 }
