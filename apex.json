@@ -1,10 +1,4 @@
 {
-
-	// Place your snippets for Apex here. Each snippet is defined under a snippet name and has a prefix, body and 
-	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
-	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
-	// same ids are connected.
-	// Example:
 	"@AuraEnabled": {
 		"prefix": "@AuraEnabled",
 		"body": [
@@ -15,51 +9,104 @@
 		],
 		"description": "Aura Enabled Apex Method"
 	},
-
-	//collection methods
-	"list" : {
+	"list": {
 		"prefix": "list<",
 		"body": [
 			"list<${1:object}> ${2:listName} = new list<$1>();"
 		],
 		"description": "list constructor"
 	},
-
-	"map" : {
+	"map": {
 		"prefix": "map<",
 		"body": [
 			"map<${1:object}, ${2:object}> ${3:mapName} = new map<$1, $2>();"
 		],
 		"description": "map constructor"
 	},
-
-	"set" : {
+	"set": {
 		"prefix": "set<",
 		"body": [
 			"set<${1:object}> ${2:setName} = new set<$1>();"
 		],
 		"description": "set constructor"
 	},
-
-	//for unit testing
-	"userCreation" : {
+	"userCreation": {
 		"prefix": "createUsers",
 		"body": [
 			"public static list<user> createUsers(integer numberOfUsers){",
-				"\tlist<user> users = new list<user>();",
-				"\tProfile p = [SELECT Id FROM Profile WHERE Name='Standard User'];",
-				"\tfor (integer i=0; i<numberOfUsers; i++){",
-					"\t\tstring x = string.valueOf(i);",
-					"\t\tUser u = new User(Alias = 't'+x, Email='standarduser'+x+'@${1:testLightningSharing2017.msm}',",
-						"\t\t\tEmailEncodingKey='UTF-8', LastName='Testing' + x, LanguageLocaleKey='en_US',LocaleSidKey='en_US', ProfileId = p.Id,",
-						"\t\t\tTimeZoneSidKey='America/Los_Angeles', UserName='standarduser'+x+'@${1:testLightningSharing2017.msm}');",
-				"\t}",
-				"",
-				"\tinsert users;",
-				"\treturn users;",
+			"\tlist<user> users = new list<user>();",
+			"\tProfile p = [SELECT Id FROM Profile WHERE Name='Standard User'];",
+			"\tfor (integer i=0; i<numberOfUsers; i++){",
+			"\t\tstring x = string.valueOf(i);",
+			"\t\tUser u = new User(Alias = 't'+x, Email='standarduser'+x+'@${1:testLightningSharing2017.msm}',",
+			"\t\t\tEmailEncodingKey='UTF-8', LastName='Testing' + x, LanguageLocaleKey='en_US',LocaleSidKey='en_US', ProfileId = p.Id,",
+			"\t\t\tTimeZoneSidKey='America/Los_Angeles', UserName='standarduser'+x+'@${1:testLightningSharing2017.msm}');",
+			"\tusers.add(u);",
+			"\t}",
+			"",
+			"\tinsert users;",
+			"\treturn users;",
 			"}"
 		],
 		"description": "creates some amount of test users"
+	},
+	"exception": {
+		"prefix": "exception",
+		"body": [
+			"public class ${1:myException} extends Exception {}"
+		],
+		"description": "apex custom exception"
+	},
+	"AuraHandledException": {
+		"prefix": "auraHandled",
+		"body": [
+			"throw new AuraHandledException('${1:exceptionText}');"
+		],
+		"description": "throw an exception for a lightning component to display"
+	},
+	"TestMethod": {
+		"prefix": "testMethod",
+		"body": [
+			"static testMethod void ${1:methodName}(){",
+			"\ttest.startTest();",
+			"\tsystem.RunAs(${2:contextuser}){",
+			"\t\t",
+			"\ttest.stopTest();",
+			"}"
+		],
+		"description": "test method with runAs and stop/start"
+	},
+	"TestSetup": {
+		"prefix": "@TestSetup",
+		"body": [
+			"@testSetup static void ${1:makeData}(){",
+			"\t",
+			"}"
+		],
+		"description": "Test setup for creating data before test methods run"
+	},
+	"createAdmin": {
+		"prefix": "createAdmin",
+		"body": [
+			"public static user createAdmin(){",
+			"\tProfile p = [SELECT Id FROM Profile WHERE Name='System Administrator'];",
+			"\t//create User",
+			"\tUser u = new User();",
+			"\tu.FirstName = 'A';",
+			"\tu.LastName = 'S';",
+			"\tu.Email = 'test@${1:domainPeopleWontGuess}';",
+			"\tu.Username = 'test@${1}';",
+			"\tu.Alias = 'astest';",
+			"\tu.ProfileId = p.Id;",
+			"\tu.TimeZoneSidKey    = 'America/Denver';",
+			"\tu.LocaleSidKey      = 'en_US';",
+			"\tu.EmailEncodingKey  = 'UTF-8';",
+			"\tu.LanguageLocaleKey = 'en_US';",
+			"\tinsert u;",
+			"\tsystem.debug('u contains ' + u);",
+			"\treturn u;",
+			"}"
+		],
+		"description": "for tests to make an admin user that you can runAs"
 	}
-
 }
