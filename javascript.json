@@ -110,5 +110,12 @@
 			");"
 		],
 		"description": "generate new record from force:recordData"
+	},
+	"xlog": {
+		"prefix": "xlog",
+		"body": [
+			"window.console.log(JSON.parse(JSON.stringify(${1:var})));"
+		],
+		"description": "logs json stuff through proxy"
 	}
 }
