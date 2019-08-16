@@ -1,9 +1,1 @@
-{
-	"caching disalbed": {
-		"prefix": "cache",
-		"body": [
-			"\"disabled\": [\"S1EncryptedStoragePref2\"]"
-		],
-		"description": "disables lc caching in the org"
-	}
-}
+{}
